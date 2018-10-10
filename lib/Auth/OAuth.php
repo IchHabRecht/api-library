@@ -965,7 +965,9 @@ class OAuth extends AbstractAuth
             if (is_array($value)) {
                 $normalized[] = $this->normalizeParameters($value, $key);
             } else {
-                $normalized[] = $this->encode($key) . '=' . $this->encode($value);
+                if (!empty($value)) {
+                    $normalized[] = $this->encode($key) . '=' . $this->encode($value);
+                }
             }
         }
 
